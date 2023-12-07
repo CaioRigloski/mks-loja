@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Product from "@/interfaces/product.interface"
 import styled from "styled-components"
 import ShoppingCart from "@/interfaces/shoppingCart.interface"
+import { CartContext } from "./CartContext"
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 30.4rem;
   height: 100vh;
   position: absolute;
@@ -12,39 +15,97 @@ const Container = styled.div`
   box-shadow: -5px 0px 6px 0px rgba(0, 0, 0, 0.13);
   > .cart-header {
     width: 100%;
-    display: inline-flex;
+    display: grid;
+    grid-auto-columns: 1fr 1fr;
+    grid-auto-flow: column;
     align-items: center;
     justify-content: space-between;
+    justify-items: end;
     font-size: 1.75rem;
     font-weight: 400;
     line-height: 0.9375rem;
   }
-  > .cart-text {
+  > .cart-header > .cart-text {
     width: 11.25rem;
-    height: 3.5rem;
     font-size: 1.6875rem;
     font-weight: 700;
     line-height: normal;
   }
-  > .cart-products > .item > 
-  .close {
+  .close-cart {
+    cursor: pointer;
+    padding-right: 1.4rem;
+  }
+  > .cart-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  > .cart-total {
+    display: grid;
+    grid-auto-columns: 1fr 1fr;
+    grid-auto-flow: column;
+    justify-items: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 0.9375rem;
+    flex: 1;
+    align-items: end;
+  }
+  > .buy {
+    height: 6.0625rem;
+    background-color: #000;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 0.9375rem;
+    color: #FFF;
     cursor: pointer;
   }
 `
 
 export default function Cart(props: ShoppingCart) {
+  const {cart, setCart} = useContext(CartContext)
+
+  function cartTotal(): number {
+    let total = 0
+    cart.map((item: Product, i: number) => {
+      let itemTotal = 0
+      let itemCount = item.count || 0
+
+      itemTotal = item.price * itemCount
+      total = total + itemTotal
+    })
+    return total
+  }
+
+
   return (
     <Container>
       <div className="cart-header">
-        <p className="cart-text">Carrinho de Compras</p>
-        <svg className="close" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none" onClick={props.onClick}>
+        <div className="cart-text">
+          <p>Carrinho de Compras</p>
+        </div>
+        <svg className="close-cart" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none" onClick={props.onClick}>
           <circle cx="19" cy="19" r="19" fill="black"></circle>
-          <text x="8" y="28" fill="#fff">X</text>
+          <text x="10" y="29" fill="#fff">X</text>
         </svg>
       </div>
       <div className="cart-products">
         {props.children}
       </div>
+      <div className="cart-total">
+        <p>Total:</p>
+        <p>R${cartTotal()}</p>
+      </div>
+      <button className="buy">
+        <p>Finalizar Compra</p>
+      </button>
     </Container>
   )
 }

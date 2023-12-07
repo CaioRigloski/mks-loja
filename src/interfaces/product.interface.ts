@@ -4,7 +4,7 @@ export default interface Product {
     name: string,
     brand?: string,
     description: string,
-    price?: any,
+    price: number,
     count?: number,
     onClick?: any,
 }
