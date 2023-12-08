@@ -17,6 +17,7 @@ const Container = styled.div`
   display: grid;
   justify-items: center;
   grid-auto-rows: max-content;
+  grid-template-rows: auto 1fr auto;
   align-content: space-between;
   width: 100vw;
   height: 100vh;
@@ -30,17 +31,19 @@ const Container = styled.div`
 `
 
 const Main = styled.main`
-  display: grid;
+  display: flex;
+  min-width: 100vw;
+  justify-content: center;
+  align-items: center;
   && > div {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      flex-wrap: wrap;
       width: 60rem;
       height: 38rem;
       gap: 1.4rem;
       justify-content: center;
-      align-items: flex-end;
+      align-items: start;
   }
 `
 
@@ -71,7 +74,6 @@ export default function Home(props: any) {
   function addToCart(e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: Product): void {
     if(!verifyCount(data)) {
       setCart((prevProps: any) => ([...prevProps, {
-        
         id: data?.id,
         name: data?.name,
         description: data?.description,

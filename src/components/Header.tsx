@@ -27,7 +27,9 @@ const Cart = styled.div`
   gap: 1rem;
   cursor: pointer;
   > p {
-    color: black;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #000;
   }
 `
 

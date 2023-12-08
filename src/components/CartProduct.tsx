@@ -25,6 +25,7 @@ const Item = styled.div`
     max-width: 7.06rem;
   }
   > .item-count > p {
+    max-width: inherit;
     font-size: 0.3125rem;
     font-weight: 400;
     margin: 0;
@@ -55,6 +56,7 @@ const Item = styled.div`
     font-style: normal;
     font-size: 0.875rem;
     line-height: 1.0625rem;
+    width: 3.875rem;
   }
   > .item-remove {
     position: relative;
