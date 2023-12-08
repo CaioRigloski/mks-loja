@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext } from "react"
+import { useContext } from "react"
 import Product from "@/interfaces/product.interface"
 import styled from "styled-components"
-import ShoppingCart from "@/interfaces/shoppingCart.interface"
+import ShoppingCart from "@/interfaces/cart.interface"
 import { CartContext } from "./CartContext"
 
 const Container = styled.div`
@@ -27,9 +27,14 @@ const Container = styled.div`
   }
   > .cart-header > .cart-text {
     width: 11.25rem;
+    height: 2.15rem;
     font-size: 1.6875rem;
     font-weight: 700;
     line-height: normal;
+
+    @media (max-width: 1025px) {
+      padding-left: 2rem;
+    }
   }
   .close-cart {
     cursor: pointer;
@@ -66,6 +71,15 @@ const Container = styled.div`
     line-height: 0.9375rem;
     color: #FFF;
     cursor: pointer;
+    @media (max-width: 1025px) {
+      display: grid;
+      align-content: center;
+      height: 4.10rem;
+    }
+  }
+
+  @media (max-width: 1025px) {
+    width: 20.625rem;
   }
 `
 

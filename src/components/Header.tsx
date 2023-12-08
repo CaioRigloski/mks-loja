@@ -6,13 +6,17 @@ import { CartContext } from "./CartContext"
 import Product from "@/interfaces/product.interface"
 
 const TopMenu = styled.header`
+  display: grid;
   width: 100%;
   height: 6.3rem;
   background-color: #0F52BA;
-  display: grid;
   grid-template-columns: auto 1fr;
   justify-items: end;
   align-items: center;
+  align-content: center;
+  @media (max-width: 1025px) {
+    height: 3rem;
+  }
 `
 
 const Cart = styled.div`
@@ -30,6 +34,21 @@ const Cart = styled.div`
     font-size: 1.125rem;
     font-weight: 700;
     color: #000;
+
+    @media (max-width: 1025px) {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 1025px) {
+    width: 3.25rem;
+    height: 1.625rem;
+    margin-right: 1.45rem;
+    gap: 0.65rem;
+    > svg {
+      max-width: 12px;
+      max-height: 11px;
+    }
   }
 `
 

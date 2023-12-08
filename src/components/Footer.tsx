@@ -6,6 +6,10 @@ const FooterStyle = styled.footer`
   color: #000000;
   justify-content: center;
   width: 100%;
+  height: 2.25rem;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 400;
 `
 
 export default function Footer(props: any) {

@@ -39,6 +39,12 @@ const ProductBox = styled.div`
       max-width: inherit;
       min-height: 100%;
     }
+
+    @media (max-width: 1025px) {
+      height: 9.95rem;
+      max-height: 9.95rem;
+      max-width: 10rem;
+    }
   }
   > .name-and-price {
     height: 2.75rem;
@@ -61,6 +67,12 @@ const ProductBox = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+    
+    @media (max-width: 1025px) {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
   }
   > .name-and-price > .price {
     display: flex;
@@ -74,8 +86,8 @@ const ProductBox = styled.div`
     font-weight: 700;
     line-height: 0.9375rem;
     border-radius: 0.32rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.45rem;
+    padding-right: 1.45rem;
   }
   > .description {
     width: 12rem;
@@ -113,6 +125,13 @@ const ProductBox = styled.div`
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1.125rem;
+  }
+
+  @media (max-width: 1025px) {
+    min-width: 15.7rem;
+    max-width: 15.7rem;
+    min-height: 20.5rem;
+    max-height: 20.5rem;
   }
 `
 

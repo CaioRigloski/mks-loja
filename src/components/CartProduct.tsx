@@ -118,11 +118,11 @@ export default function ShoppingCartProduct() {
             <div>
               <div onClick={(e) => removeOneFromCart(e, item)}>-</div>
               <svg xmlns="http://www.w3.org/2000/svg" width="2" height="12" viewBox="0 0 2 12" fill="none">
-                <path d="M1 0V11.5" stroke="#BFBFBF" stroke-width="0.2"/>
+                <path d="M1 0V11.5" stroke="#BFBFBF" strokeWidth="0.2"/>
               </svg>
               <div>{item.count}</div>
               <svg xmlns="http://www.w3.org/2000/svg" width="2" height="12" viewBox="0 0 2 12" fill="none">
-                <path d="M1 0V11.5" stroke="#BFBFBF" stroke-width="0.2"/>
+                <path d="M1 0V11.5" stroke="#BFBFBF" strokeWidth="0.2"/>
               </svg>
               <div onClick={(e) => addToCart(e, item)}>+</div>
             </div>

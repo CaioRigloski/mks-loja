@@ -11,6 +11,7 @@ import CartProduct from "./CartProduct"
 import Product from "@/interfaces/product.interface"
 import { CartContext, CartProvider } from "./CartContext"
 import CartContextType from "@/interfaces/cartContext.interface"
+import ProductDisplay from "./ProductDisplay"
 
 
 const Container = styled.div`
@@ -35,54 +36,16 @@ const Main = styled.main`
   min-width: 100vw;
   justify-content: center;
   align-items: center;
-  && > div {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      width: 60rem;
-      height: 38rem;
-      gap: 1.4rem;
-      justify-content: center;
-      align-items: start;
+
+  @media (max-width: 1025px) {
+    flex: 1;
+    overflow-y: scroll;
+    align-items: flex-start;
   }
 `
 
-export default function Home(props: any) {
-  const { data, error, isLoading} = useQuery({queryKey: ['products'], queryFn: () => getProducts({page: 1})})
-
-  const {cart, setCart}: CartContextType = useContext<CartContextType>(CartContext)
-  
+export default function Home(props: any) {  
   const [showCart, setShowCart] = useState<boolean>(false)
-
-  function verifyCount(data: Product): boolean | undefined {
-    let itemExist = false
-    cart.map((item: Product, i: number): void => {
-      if(item.id === data.id) {
-        const cartCopy = cart.slice()
-        const toSet: any = cart.splice(i)
-        toSet[0].count = toSet[0].count + 1
-
-        setCart(cartCopy)
-        itemExist = true
-      } else {
-        itemExist = false
-      }
-    })
-    return itemExist
-  }
-
-  function addToCart(e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: Product): void {
-    if(!verifyCount(data)) {
-      setCart((prevProps: any) => ([...prevProps, {
-        id: data?.id,
-        name: data?.name,
-        description: data?.description,
-        photo: data?.photo,
-        price: data?.price,
-        count: 1,
-      }]))
-    }
-  }
 
   function showCartContainer() {
     setShowCart(true)
@@ -100,15 +63,7 @@ export default function Home(props: any) {
               <CartProduct/>
             </Cart> : false}
           <Main>
-            <div>
-              {data?.products.map((product: any) => {
-                return (
-                  <Suspense key={product.id} fallback={<Loading/>}>
-                    <ProductItem id={product.id} photo={product.photo} name={product.name} description={product.description} price={product.price} onClick={(e: any) => addToCart(e, product)}/>
-                </Suspense>
-              )
-            })}
-            </div>
+            <ProductDisplay/>
           </Main>
           <Footer/>
       </Container>

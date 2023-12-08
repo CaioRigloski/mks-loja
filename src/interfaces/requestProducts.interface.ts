@@ -1,3 +1,3 @@
-export default interface requestProducts {
-  page: Number
+export default interface RequestProducts {
+  page: number
 }
