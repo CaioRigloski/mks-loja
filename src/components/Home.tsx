@@ -1,16 +1,9 @@
-import { Suspense, useContext, useState,Dispatch, SetStateAction } from "react"
-import { useQuery } from '@tanstack/react-query'
+import { useState } from "react"
 import styled from "styled-components"
 import Footer from '@/components/Footer'
-import ProductItem from '@/components/ProductItem'
 import Header from '@/components/Header'
-import Loading from '@/components/Loading'
-import getProducts from '@/api/getProducts'
 import Cart from "./Cart"
 import CartProduct from "./CartProduct"
-import Product from "@/interfaces/product.interface"
-import { CartContext, CartProvider } from "./CartContext"
-import CartContextType from "@/interfaces/cartContext.interface"
 import ProductDisplay from "./ProductDisplay"
 
 
@@ -56,16 +49,16 @@ export default function Home(props: any) {
   }
 
   return (
-      <Container>
-        <Header onClick={showCartContainer}/>
-          {showCart ?
-            <Cart onClick={closeCartContainer}>
-              <CartProduct/>
-            </Cart> : false}
-          <Main>
-            <ProductDisplay/>
-          </Main>
-          <Footer/>
-      </Container>
+    <Container>
+      <Header onClick={showCartContainer}/>
+        {showCart ?
+          <Cart onClick={closeCartContainer}>
+            <CartProduct/>
+          </Cart> : false}
+        <Main>
+          <ProductDisplay/>
+        </Main>
+        <Footer/>
+    </Container>
   )
 }

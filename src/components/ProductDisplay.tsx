@@ -1,12 +1,12 @@
-import { useContext, Suspense } from "react"
+import { useContext, Suspense, lazy } from "react"
 import { useQuery } from "@tanstack/react-query"
 import CartContextType from "@/interfaces/cartContext.interface"
 import { CartContext } from "./CartContext"
 import Product from "@/interfaces/product.interface"
 import Loading from "./Loading"
-import ProductItem from "./ProductItem"
 import getProducts from "@/api/getProducts"
 import styled from "styled-components"
+const ProductItem  = lazy(() => import("./ProductItem"));
 
 const Display = styled.div`
   display: grid;

@@ -1,6 +1,6 @@
 import CartContextType from "@/interfaces/cartContext.interface"
 import Product from "@/interfaces/product.interface"
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState } from "react"
 
 
 const CartContextValue: CartContextType = {

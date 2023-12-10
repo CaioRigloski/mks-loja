@@ -1,7 +1,7 @@
 import Product from "@/interfaces/product.interface"
-import { Dispatch, SetStateAction, useContext, useEffect } from "react"
+import { useContext } from "react"
 import styled from "styled-components"
-import { CartContext, CartProvider } from "./CartContext"
+import { CartContext } from "./CartContext"
 
 const Item = styled.div`
   display: inline-flex;

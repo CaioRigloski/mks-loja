@@ -1,22 +1,6 @@
 import styled from "styled-components"
-import { useQuery } from '@tanstack/react-query'
 import Product from "@/interfaces/product.interface"
-import { useState } from "react"
-import ShoppingCart from "./Cart"
 
-
-const ProductCOntainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  flex-wrap: wrap;
-  width: 60rem;
-  height: 38rem;
-  gap: 1.4rem;
-  justify-content: center;
-  align-items: flex-end;
-}
-`
 
 const ProductBox = styled.div`
   display: grid;
