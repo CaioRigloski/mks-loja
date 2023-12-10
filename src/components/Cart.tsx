@@ -14,8 +14,8 @@ const Container = styled.div`
   right: 0;
   box-shadow: -5px 0px 6px 0px rgba(0, 0, 0, 0.13);
   > .cart-header {
-    width: 100%;
     display: grid;
+    width: 100%;
     grid-auto-columns: 1fr 1fr;
     grid-auto-flow: column;
     align-items: center;
@@ -27,7 +27,6 @@ const Container = styled.div`
   }
   > .cart-header > .cart-text {
     width: 11.25rem;
-    height: 2.15rem;
     font-size: 1.6875rem;
     font-weight: 700;
     line-height: normal;
