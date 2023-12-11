@@ -16,6 +16,13 @@ const Item = styled.div`
   color: #2C2C2C;
   > .item-image {
     width: 3.125rem;
+    grid-area: a;
+
+    @media (max-width: 1025px) {
+      width: 5rem;
+      height: 6rem;
+      padding-top: 1.4rem;
+    }
   }
   > .item-image > img {
     max-width: 100%;
@@ -23,12 +30,33 @@ const Item = styled.div`
   > .item-name {
     width: 7.06rem;
     max-width: 7.06rem;
+    grid-area: b;
+    
+    @media (max-width: 1025px) {
+      width: 13.18rem;
+      max-width: 13.18rem;
+      height: 1.34031rem;
+      margin: 0.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+    }
+  }
+  > .item-count {
+    grid-area: c;
   }
   > .item-count > p {
     max-width: inherit;
     font-size: 0.3125rem;
     font-weight: 400;
     margin: 0;
+
+    @media (max-width: 1025px) {
+      display: none;
+    }
   }
   > .item-count > div {
     display: inline-flex;
@@ -42,12 +70,21 @@ const Item = styled.div`
     > div {
       flex: 1;
       font-size: 0.5rem;
+
+      @media (max-width: 1025px) {
+        font-size: 1.25rem;
+      }
     }
     > div:not(:nth-of-type(2)) {
       cursor: pointer;
     }
     > svg {
       align-self: center;
+    }
+
+    @media (max-width: 1025px) {
+      width: 6.0855rem;
+      height: 2.15619rem;
     }
   }
   > .item-price {
@@ -57,12 +94,55 @@ const Item = styled.div`
     font-size: 0.875rem;
     line-height: 1.0625rem;
     width: 3.875rem;
+    grid-area: d;
+    > p {
+      margin: 0;
+    }
+    @media (max-width: 1025px) {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      width: 5.25rem;
+      height: 2.17544rem;
+      font-size: 0.9375rem;
+      border-radius: 0.3125rem;
+      background: #373737;
+      color: #fff;
+    }
   }
   > .item-remove {
     position: relative;
     top: -45px;
     left: 15px;
     cursor: pointer;
+  }
+
+  @media (max-width: 1025px) {
+    display: grid;
+    grid-template-areas:
+    "a a"
+    "b b"
+    "c d"
+    ;
+    justify-items: center;
+    width: 15.625rem;
+    height: 13.75rem;
+    min-height: 13.75rem;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.14);
+    .item-remove {
+      width: 1.3125rem;
+      height: 2.5755rem;
+      top: -180px;
+      left: 160px;
+    }
+    circle {
+      display: none;
+    }
+    text {
+      fill: #000;
+      font-size: 1.8rem;
+      transform: translateX(-5px) translateY(7px);
+    }
   }
 `
 

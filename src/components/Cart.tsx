@@ -50,6 +50,10 @@ const Container = styled.div`
     &::-webkit-scrollbar {
       display: none;
     }
+
+    @media (max-width: 1025px) {
+      padding-top: 0.5rem;
+    }
   }
   > .cart-total {
     display: grid;
@@ -79,6 +83,15 @@ const Container = styled.div`
 
   @media (max-width: 1025px) {
     width: 20.625rem;
+    .close-cart {
+      width: 2.87013rem;
+      height: 2.87013rem;
+      > text {
+        fill: #0F52BA;
+        font-size: 2.2rem;
+        transform: translateY(2px) translateX(-3px);
+      }
+    }
   }
 `
 
@@ -102,7 +115,7 @@ export default function Cart(props: ShoppingCart) {
     <Container>
       <div className="cart-header">
         <div className="cart-text">
-          <p>Carrinho de Compras</p>
+          <p>Carrinho<br/>de compras</p>
         </div>
         <svg className="close-cart" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none" onClick={props.onClick}>
           <circle cx="19" cy="19" r="19" fill="black"></circle>

@@ -34,6 +34,7 @@ const Main = styled.main`
     flex: 1;
     overflow-y: scroll;
     align-items: flex-start;
+    background-color: #fff;
   }
 `
 
