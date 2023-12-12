@@ -123,7 +123,7 @@ export default function ProductItem(props: Product) {
   return (
     <ProductBox>
         <div className="image">
-          <img src={props.photo}></img>
+          <img src={props.photo} alt="Product photo"/>
         </div>
         <div className="name-and-price">
           <p className="name">{props.name}</p>

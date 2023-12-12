@@ -3,6 +3,7 @@ import { useContext } from "react"
 import styled from "styled-components"
 import { CartContext } from "./CartContext"
 
+
 const Item = styled.div`
   display: inline-flex;
   width: 23.6875rem;
@@ -190,7 +191,7 @@ export default function ShoppingCartProduct() {
       return (
         <Item key={item.id}>
           <div className="item-image">
-            <img src={item.photo}/>
+            <img src={item.photo} alt="Item photo"/>
           </div>
           <p className="item-name">{item.name}</p>
           <div className="item-count">
