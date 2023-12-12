@@ -12,4 +12,4 @@ Single page store application created from [mks-frontend-challenge](https://gith
 ## To-do
 - [x] API consume
 - [x] Web layout
-- [ ] Mobile layout
+- [x] Mobile layout
