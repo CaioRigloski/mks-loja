@@ -36,7 +36,7 @@ const Sistemas = styled.p`
   }
 `
 
-export default function Logo(props: any) {
+export default function Logo() {
     return (
         <LogoBox>
             <div>

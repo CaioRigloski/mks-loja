@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import styled, { keyframes } from "styled-components"
 
@@ -33,10 +34,9 @@ const LoadingBar = styled.div`
   align-items: center;
 `
 
-const Bar = styled.div<{width: number}>`
+const Bar = styled(motion.div)`
   background-color: #0F52BA;
   height: 100%;
-  width: ${props => props.width}%;
   border-radius: 0.5rem;
 `
 
@@ -44,6 +44,7 @@ const Bar = styled.div<{width: number}>`
 export default function LoadingScreen() {
   const [progress, setProgress] = useState<number>(0)
   
+  // Sets the progress by 10 steps with 50ms delay
   useEffect(() => {
     if(progress < 100) {
       setTimeout(() => setProgress(progress + 10), 500/10)
@@ -54,7 +55,9 @@ export default function LoadingScreen() {
     <LoadingContainer>
       <p>Loading</p>
       <LoadingBar>
-        <Bar width={progress}/>
+        <Bar 
+          animate={{ width: progress + "%" }}
+        />
       </LoadingBar>
     </LoadingContainer>
   )

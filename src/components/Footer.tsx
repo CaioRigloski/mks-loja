@@ -12,7 +12,7 @@ const FooterStyle = styled.footer`
   font-weight: 400;
 `
 
-export default function Footer(props: any) {
+export default function Footer() {
     return (
       <FooterStyle>
           MKS sistemas © Todos os direitos reservados

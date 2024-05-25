@@ -1,7 +1,7 @@
 import Product from "@/interfaces/product.interface"
 import { useContext } from "react"
 import styled from "styled-components"
-import { CartContext } from "./CartContext"
+import { CartContext } from "../contexts/CartContext"
 
 
 const Item = styled.div`
@@ -150,6 +150,7 @@ const Item = styled.div`
 export default function ShoppingCartProduct() {
   const {cart, setCart} = useContext(CartContext)
 
+  // Remove just 1 selected item
   function removeOneFromCart(e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: Product) {
     const cartCopy = [...cart]
     cartCopy.map((item: Product, i: number) => {
@@ -165,6 +166,7 @@ export default function ShoppingCartProduct() {
     setCart(cartCopy)
   }
 
+  // Remove all the items of 1 product
   function removeFromCart(e: React.MouseEvent<SVGSVGElement, MouseEvent>, data: Product) {
     const cartCopy = [...cart]
     cartCopy.map((item: Product, i: number) => {
@@ -175,6 +177,7 @@ export default function ShoppingCartProduct() {
     setCart(cartCopy)
   }
 
+  // add 1 item to the cart
   function addToCart(e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: Product) {
     const cartCopy = [...cart]
     cartCopy.map((item: Product, i: number) => {

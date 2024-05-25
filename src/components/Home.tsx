@@ -38,7 +38,7 @@ const Main = styled.main`
   }
 `
 
-export default function Home(props: any) {  
+export default function Home() {  
   const [showCart, setShowCart] = useState<boolean>(false)
 
   function showCartContainer() {

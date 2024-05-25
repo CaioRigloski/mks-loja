@@ -2,7 +2,7 @@ import { useContext } from "react"
 import Product from "@/interfaces/product.interface"
 import styled from "styled-components"
 import ShoppingCart from "@/interfaces/cart.interface"
-import { CartContext } from "./CartContext"
+import { CartContext } from "../contexts/CartContext"
 
 const Container = styled.div`
   display: flex;
@@ -98,6 +98,7 @@ const Container = styled.div`
 export default function Cart(props: ShoppingCart) {
   const {cart, setCart} = useContext(CartContext)
 
+  // return total value of selected products
   function cartTotal(): number {
     let total = 0
     cart.map((item: Product, i: number) => {

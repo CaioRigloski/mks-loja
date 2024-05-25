@@ -1,16 +1,7 @@
-import styled, { keyframes } from "styled-components"
+import { motion } from "framer-motion"
+import styled from "styled-components"
 
-const slideTransition = keyframes`
-  0% {
-    background-position: 0% 100%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
-`
-
-const Item = styled.div`
-  animation: ${slideTransition} 1s ease alternate infinite;
+const Item = styled(motion.div)`
   min-width: 14rem;
   max-width: 14rem;
   min-height: 18rem;
@@ -28,8 +19,12 @@ const Item = styled.div`
   }
 `
 
-export default function Loading(props: any) {
+export default function Loading() {
     return (
-      <Item/>
+      <Item
+        initial={{ backgroundPosition: "0% 100%"}}
+        animate={{ backgroundPosition:  "100% 0%"}}
+        transition={{ duration: 1 }}
+      />
     )
 }

@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import Logo from "./Logo"
-import Header from "@/interfaces/header.interface"
+import HeaderProps from "@/interfaces/header.interface"
 import { useContext } from "react"
-import { CartContext } from "./CartContext"
+import { CartContext } from "../contexts/CartContext"
 import Product from "@/interfaces/product.interface"
 
 const TopMenu = styled.header`
@@ -52,9 +52,10 @@ const Cart = styled.div`
   }
 `
 
-export default function Header(props: Header) {
+export default function Header(props: HeaderProps) {
   const {cart, setCart} = useContext(CartContext)
 
+  // Count the number of selected items
   const cartCount = (): number => {
     let count = 0
     cart.map((item: Product) => {

@@ -1,7 +1,7 @@
 import { useContext, Suspense, lazy } from "react"
-import { useQuery } from "@tanstack/react-query"
+import { useSuspenseQuery } from "@tanstack/react-query"
 import CartContextType from "@/interfaces/cartContext.interface"
-import { CartContext } from "./CartContext"
+import { CartContext } from "../contexts/CartContext"
 import Product from "@/interfaces/product.interface"
 import Loading from "./Loading"
 import getProducts from "@/api/getProducts"
@@ -29,10 +29,11 @@ const Display = styled.div`
 `
 
 export default function ProductDisplay() {
-  const { data, error, isLoading} = useQuery({queryKey: ['products'], queryFn: () => getProducts({page: 1})})
+  const { data } = useSuspenseQuery({queryKey: ['products'], queryFn: () => getProducts({page: 1})})
   const {cart, setCart}: CartContextType = useContext<CartContextType>(CartContext)
 
-  function verifyCount(data: Product): boolean | undefined {
+  // Verify if the item already exists in the cart
+  function verifyCount(data: Product): boolean {
     let itemExist = false
     cart.map((item: Product, i: number): void => {
       if(item.id === data.id) {
@@ -49,6 +50,7 @@ export default function ProductDisplay() {
     return itemExist
   }
 
+  // add one item to the cart
   function addToCart(e: React.MouseEvent<HTMLDivElement, MouseEvent>, data: Product): void {
     if(!verifyCount(data)) {
       setCart((prevProps: any) => ([...prevProps, {
@@ -64,7 +66,7 @@ export default function ProductDisplay() {
 
   return (
     <Display>
-      {data?.products.map((product: any) => {
+      {data.products.map((product: any) => {
         return (
           <Suspense key={product.id} fallback={<Loading/>}>
             <ProductItem id={product.id} photo={product.photo} name={product.name} description={product.description} price={product.price} onClick={(e: any) => addToCart(e, product)}/>
